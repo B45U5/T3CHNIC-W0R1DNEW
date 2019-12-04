@@ -1,0 +1,11 @@
+.jfx-progress-bar > .track, .jfx-progress-bar > .bar {
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+}
+.jfx-progress-bar > .bar {
+    -fx-background-color:  linear-gradient(to bottom right, #F62210, #A41A5C);
+}
+.jfx-progress-bar > .track {
+    -fx-background-color: transparent;
+}
+

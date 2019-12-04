@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDialog?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.web.WebView?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="250.0" minWidth="650.0" prefHeight="542.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.B4GU5.TW.Controllers.MainController">
+   <children>
+      <AnchorPane fx:id="mainPane" minHeight="250.0" minWidth="650.0" prefHeight="504.0" prefWidth="853.0" style="-fx-background-color: linear-gradient(to right top, #0f0f0f, #131313, #171717, #1a1a1a, #1e1d1d);" StackPane.alignment="CENTER">
+         <children>
+            <AnchorPane fx:id="appPane" prefHeight="75.0" prefWidth="853.0" style="-fx-background-color: linear-gradient(to bottom right, #F62210, #A41A5C);; -fx-background-size: 100%; -fx-background-position: center;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button fx:id="addons" alignment="CENTER" contentDisplay="CENTER" layoutX="647.0" layoutY="15.0" mnemonicParsing="false" onAction="#addons" prefHeight="45.0" prefWidth="78.0" style="-fx-background-color: rgba(17, 17, 17, 0); -fx-background-radius: 0px;" text="Dodatki" textAlignment="CENTER" textFill="WHITE" AnchorPane.rightAnchor="235.0" AnchorPane.topAnchor="15.0">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="news" alignment="CENTER" contentDisplay="CENTER" layoutX="543.0" layoutY="15.0" mnemonicParsing="false" onAction="#news" prefHeight="45.0" prefWidth="104.0" style="-fx-background-color: rgba(17, 17, 17, 0); -fx-background-radius: 0px;" text="Wiadomości" textAlignment="CENTER" textFill="WHITE" AnchorPane.rightAnchor="313.0" AnchorPane.topAnchor="15.0">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="play" alignment="CENTER" contentDisplay="CENTER" layoutX="696.0" layoutY="15.0" mnemonicParsing="false" onAction="#play" onMouseEntered="#playAnim" onMouseExited="#playExit" prefHeight="45.0" prefWidth="97.0" style="-fx-background-color: white; -fx-font-family: 'Dosis Light'; -fx-background-radius: 30 0 0 30;" styleClass="btn-round" stylesheets="@Controllers/css/buttonsFix.css" textAlignment="RIGHT" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="15.0">
+                     <font>
+                        <Font name="Calibri Light" size="20.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="#757ceb" />
+                              <Stop color="#757ceb" offset="0.007662835249042145" />
+                              <Stop color="#00cff7" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                     <graphic>
+                        <Label fx:id="playText" text="Graj">
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#757ceb" />
+                                    <Stop color="#757ceb" offset="0.007662835249042145" />
+                                    <Stop color="#00cff7" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Label>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="modpacks" alignment="CENTER" contentDisplay="CENTER" layoutX="725.0" layoutY="15.0" mnemonicParsing="false" onAction="#modpacks" prefHeight="45.0" prefWidth="67.0" style="-fx-background-color: rgba(17, 17, 17, 0); -fx-background-radius: 0px;" text="Paczki" textAlignment="CENTER" textFill="WHITE" AnchorPane.rightAnchor="168.0" AnchorPane.topAnchor="15.0">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Pane fx:id="userico" layoutX="12.0" layoutY="11.0" prefHeight="53.0" prefWidth="52.0" style="-fx-background-image: url(&quot;https://crafatar.com/avatars/8667ba71-b85a-4004-af54-457a9734eed7&quot;); -fx-background-radius: 20px; -fx-background-size: cover; -fx-shape: &quot;M0 13 C0 5 5 0 13 0 L86 0 C94 0 99 5 99 13 L99 86 C99 94 94 99 86 99 L13 99 C5 99 0 94 0 86Z&quot;;;" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="11.0" />
+                  <Button fx:id="settingsBTN" alignment="CENTER" contentDisplay="CENTER" layoutX="793.0" layoutY="15.0" mnemonicParsing="false" onAction="#settingsBTN" onMouseEntered="#settingsAnim" onMouseExited="#settingsExit" prefHeight="45.0" prefWidth="41.0" style="-fx-background-color: #2d3436; -fx-background-radius: 0 30 30 0; -fx-font-family: 'Simplifica';" styleClass="btn-round" stylesheets="@Controllers/css/buttonsFix.css" textAlignment="CENTER" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="15.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <graphic>
+                        <MaterialDesignIconView fx:id="settingsICON" glyphName="SETTINGS" size="20" textAlignment="CENTER">
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#03a3ff" />
+                                    <Stop color="#00ffba" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </MaterialDesignIconView>
+                     </graphic>
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="BLACK" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Button>
+                  <Text fx:id="nick" fill="WHITE" layoutX="73.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: 'Dosis Light'; -fx-font-size: 32px;;" text="Steve" wrappingWidth="298.640625" />
+                  <Text fx:id="rankTxt" fill="WHITE" layoutX="73.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 22px; -fx-font-family: 'Dosis Light';" text="#Gracz" wrappingWidth="200.0419921875" />
+               </children>
+               <effect>
+                  <ColorAdjust />
+               </effect>
+            </AnchorPane>
+            <AnchorPane layoutY="75.0" prefHeight="430.0" prefWidth="853.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+               <children>
+                  <WebView fx:id="webBrowser" prefHeight="429.0" prefWidth="853.0" stylesheets="@Controllers/css/Scrollbar.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <JFXProgressBar fx:id="browserProgress" prefHeight="0.0" prefWidth="960.0" stylesheets="@Controllers/css/webprogressbar.css" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="downloadInfoPane" layoutY="497.0" prefHeight="47.0" prefWidth="960.0" style="-fx-background-color: linear-gradient(to right top, #0f0f0f, #131313, #171717, #1a1a1a, #1e1d1d);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <MaterialDesignIconView fill="WHITE" glyphName="DOWNLOAD" layoutX="8.0" layoutY="36.0" size="32" text="" wrappingWidth="40.04197883605957" />
+                  <Text fx:id="downloadInfo" fill="WHITE" layoutX="54.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="...">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <JFXProgressBar fx:id="downloadProgress" layoutY="44.0" prefHeight="0.0" prefWidth="960.0" stylesheets="@Controllers/css/progressbar.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="menuLeftPane" prefHeight="468.0" prefWidth="960.0" visible="false" StackPane.alignment="CENTER">
+         <children>
+            <AnchorPane fx:id="loginPane" prefHeight="542.0" prefWidth="431.0" style="-fx-background-color: linear-gradient(to bottom right, #374248, #02171F);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fitHeight="65.0" fitWidth="365.0" layoutX="48.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logo.png" />
+                     </image>
+                  </ImageView>
+                  <JFXProgressBar fx:id="loginLoading" layoutX="-406.0" layoutY="14.0" prefHeight="0.0" prefWidth="960.0" stylesheets="@Controllers/css/webprogressbar.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <VBox fx:id="loadingText" alignment="CENTER" layoutY="218.0" prefHeight="107.0" prefWidth="431.0">
+                     <children>
+                        <Label fx:id="loginButtonText11" alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="417.0" text="Ładowanie launchera">
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#757ceb" />
+                                    <Stop color="#757ceb" offset="0.007662835249042145" />
+                                    <Stop color="#00cff7" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#00000091" height="10.0" radius="4.5" width="10.0" />
+                           </effect>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="loginFormPane" alignment="CENTER" layoutY="67.0" prefHeight="408.0" prefWidth="431.0" AnchorPane.bottomAnchor="67.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="67.0">
+                     <children>
+                        <Label fx:id="loginButtonText1" alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="248.0" text="Logowanie">
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#757ceb" />
+                                    <Stop color="#757ceb" offset="0.007662835249042145" />
+                                    <Stop color="#00cff7" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#00000091" height="10.0" radius="4.5" width="10.0" />
+                           </effect>
+                        </Label>
+                        <JFXTextField fx:id="loginField" focusColor="WHITE" labelFloat="true" prefHeight="25.0" prefWidth="299.0" promptText="Login" style="-fx-text-fill: white;" unFocusColor="#ffffff45">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="65.0" right="65.0" top="30.0" />
+                           </VBox.margin>
+                        </JFXTextField>
+                        <JFXPasswordField fx:id="passwordField" focusColor="WHITE" labelFloat="true" prefHeight="25.0" prefWidth="299.0" promptText="Hasło" style="-fx-text-fill: white;" unFocusColor="#ffffff45">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="65.0" right="65.0" top="20.0" />
+                           </VBox.margin>
+                        </JFXPasswordField>
+                        <Button fx:id="loginButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#loginButton" onMouseEntered="#loginAnim" onMouseExited="#loginExit" prefHeight="45.0" prefWidth="326.0" style="-fx-background-color: white; -fx-font-family: 'Dosis Light'; -fx-background-radius: 30 30 30 30;" styleClass="btn-round" stylesheets="@Controllers/css/buttonsFix.css" textAlignment="RIGHT">
+                           <font>
+                              <Font name="Calibri Light" size="20.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#757ceb" />
+                                    <Stop color="#757ceb" offset="0.007662835249042145" />
+                                    <Stop color="#00cff7" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                           <graphic>
+                              <Label fx:id="loginButtonText" text="Zaloguj się">
+                                 <textFill>
+                                    <LinearGradient endX="1.0" endY="1.0">
+                                       <stops>
+                                          <Stop color="#757ceb" />
+                                          <Stop color="#757ceb" offset="0.007662835249042145" />
+                                          <Stop color="#00cff7" offset="1.0" />
+                                       </stops>
+                                    </LinearGradient>
+                                 </textFill>
+                              </Label>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets bottom="30.0" top="30.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Text fx:id="loginText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="396.13671875">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                  </VBox>
+               </children>
+               <effect>
+                  <DropShadow height="0.0" radius="12.1625" spread="0.31" width="50.65" />
+               </effect>
+            </AnchorPane>
+         </children>
+         <StackPane.margin>
+            <Insets />
+         </StackPane.margin>
+      </AnchorPane>
+      <AnchorPane fx:id="menuPackLeftPane" prefHeight="468.0" prefWidth="960.0" visible="false">
+         <children>
+            <AnchorPane fx:id="modpackPane" prefHeight="542.0" prefWidth="431.0" style="-fx-background-color: linear-gradient(to bottom right, #374248, #02171F);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fitHeight="65.0" fitWidth="365.0" layoutX="48.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logo.png" />
+                     </image>
+                  </ImageView>
+                  <VBox alignment="CENTER" layoutX="30.0" layoutY="119.0" prefHeight="305.0" prefWidth="371.0" AnchorPane.bottomAnchor="118.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="119.0">
+                     <children>
+                        <Label fx:id="loginButtonText111" alignment="CENTER" contentDisplay="CENTER" prefHeight="65.0" prefWidth="417.0" text="Wybierz paczkę">
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#757ceb" />
+                                    <Stop color="#757ceb" offset="0.007662835249042145" />
+                                    <Stop color="#00cff7" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#00000091" height="10.0" radius="4.5" width="10.0" />
+                           </effect>
+                           <VBox.margin>
+                              <Insets bottom="30.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="150.0" prefWidth="310.0">
+                           <children>
+                              <Button fx:id="skyblockButton" mnemonicParsing="false" onAction="#skyblockButton" prefHeight="150.0" prefWidth="150.0" style="-fx-background-image: url('https://i.imgur.com/spaHrUR.png'); -fx-background-color: rgb(35, 35, 35); -fx-background-radius: 0px; -fx-background-size: cover; -fx-shape: &quot;M0 13 C0 5 5 0 13 0 L86 0 C94 0 99 5 99 13 L99 86 C99 94 94 99 86 99 L13 99 C5 99 0 94 0 86Z&quot;;">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <opaqueInsets>
+                                    <Insets top="1.0" />
+                                 </opaqueInsets>
+                                 <HBox.margin>
+                                    <Insets right="15.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="survivalButton" disable="true" layoutX="10.0" mnemonicParsing="false" onAction="#survivalButton" prefHeight="150.0" prefWidth="150.0" style="-fx-background-image: url('https://i.imgur.com/OUeAErE.png'); -fx-background-color: rgb(35, 35, 35); -fx-background-radius: 0px; -fx-background-size: cover; -fx-shape: &quot;M0 13 C0 5 5 0 13 0 L86 0 C94 0 99 5 99 13 L99 86 C99 94 94 99 86 99 L13 99 C5 99 0 94 0 86Z&quot;;">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <opaqueInsets>
+                                    <Insets top="1.0" />
+                                 </opaqueInsets>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+               <effect>
+                  <DropShadow height="0.0" radius="12.1625" spread="0.31" width="50.65" />
+               </effect>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <JFXDialog />
+   </children>
+</StackPane>
