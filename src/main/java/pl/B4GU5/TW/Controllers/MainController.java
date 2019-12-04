@@ -72,8 +72,7 @@ public class MainController {
     private String urlAddonsList = "https://api.technicworld.pl/api/addons_" + settings.getPack() + ".json";
     private String urlModsList = "https://api.technicworld.pl/api/mods-" + settings.getPack() + ".json";
     private String urlPackVersion = "0.0.0";
-    private String mcver = "1.12.2";
-    private String forgever = "1.12.2-14.23.5.2847";
+
 	
 	@FXML
 	private Label playText;
@@ -259,13 +258,19 @@ public class MainController {
 	}
 	
 	private void modpackCheck() {
+	    modsPath = settings.getWorkingDir() + slash + settings.getPack() + slash + "Minecraft" + slash + "mods";
+	    minecraftPath = settings.getWorkingDir() + slash + settings.getPack() + slash + "Minecraft";
+	    urlModsPath = "https://api.technicworld.pl/api/modpack-" + settings.getPack();
+	    urlAddonsList = "https://api.technicworld.pl/api/addons_" + settings.getPack() + ".json";
+	    urlModsList = "https://api.technicworld.pl/api/mods-" + settings.getPack() + ".json";
+	    urlPackVersion = "0.0.0";
 		downloadInfoPane.setVisible(true);
 		Runnable thread = new Runnable() {
 			public void run() {
 				try {
 					getModsJson();
 					if (startCheckingAndDownloadMods(urlModsPath, modsPath)) {
-						if (downloadConfigs(new URL("https://api.technicworld.pl/api/config-skyblock.zip"), new File(minecraftPath))) {
+						if (downloadConfigs(new URL("https://api.technicworld.pl/api/config-"+settings.getPack()+".zip"), new File(minecraftPath))) {
 				            javafx.application.Platform.runLater( () -> downloadInfoPane.setVisible(false));
 						}
 					}
@@ -385,7 +390,17 @@ public class MainController {
         		loginAnimate.setOnFinished(e -> modpackInit());
         		settings.setUsername(json.get("username").toString());
         		nick.setText(settings.getUsername());
-        		rankTxt.setText("#" + json.get("rank").toString());
+        		if(json.get("rank").toString().equals("Wlasciciel")) {
+        			rankTxt.setText("#Właścicel");
+        		} else if(json.get("rank").toString().equals("default") || json.get("rank").toString().equals("Default")) {
+        			rankTxt.setText("#Gracz");
+        		} else if(json.get("rank").toString().isEmpty()) {
+            		rankTxt.setText("#Gracz");
+        		} else if(json.get("rank").toString().equals("admin")) {
+            		rankTxt.setText("#Administrator");
+        		} else {
+            		rankTxt.setText("#" + json.get("rank").toString());
+        		}
 	        } else if (settings.getToken().contentEquals("-1")) {
 	        	//Nigdy nie zalogowano
 	        	loginLoading.setVisible(false);

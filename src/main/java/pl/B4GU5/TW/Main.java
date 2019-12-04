@@ -4,10 +4,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import jfxtras.styles.jmetro.JMetro;
 import jfxtras.styles.jmetro.Style;
 import pl.B4GU5.Utils.settings;
@@ -25,6 +28,15 @@ public class Main extends Application {
 		stage.setMinWidth(700);
 		stage.centerOnScreen();
 		stage.setTitle("TechnicWorld | Serwery na modach!");
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			@Override
+			public void handle(WindowEvent t) {
+				settings.saveSettings();
+				Platform.exit();
+			    System.exit(0);
+			}
+		});
+
 		stage.show();
 	}
 
